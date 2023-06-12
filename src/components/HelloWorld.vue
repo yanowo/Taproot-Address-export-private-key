@@ -13,7 +13,7 @@ export default {
   data() {
     return {
       mnemonic: '',
-      path: `m/86'/0'/0'/0`,
+      path: "m/86'/0'/0'/0",
       privateKey: '',
       address: ''
     }
@@ -36,7 +36,7 @@ export default {
 
         const hdkey = HDKey.fromMasterSeed(masterseed, network_version.mainnet);
 
-        const receive_path = "m/86'/0'/0'/0";
+        const receive_path = this.path;
 
         const receive_node = hdkey.derive(receive_path);
 
