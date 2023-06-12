@@ -16,7 +16,7 @@ export default {
       path: "m/86'/0'/0'/0",
       privateKey: '',
       address: '',
-      url:'ttps://github.com/yanowo/Taproot-Address-export-private-key'
+      url:'https://github.com/yanowo/Taproot-Address-export-private-key'
     }
   },
   methods: {
