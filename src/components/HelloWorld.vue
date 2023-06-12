@@ -16,7 +16,9 @@ export default {
       path: "m/86'/0'/0'/0",
       privateKey: '',
       address: '',
-      url:'https://github.com/yanowo/Taproot-Address-export-private-key'
+      url:'https://github.com/yanowo/Taproot-Address-export-private-key',
+      privateKeysInput: "",
+      addresses: [],
     }
   },
   methods: {
@@ -24,6 +26,22 @@ export default {
       this.$copyText(text);
       alert(`Copied ${text}`);
     },
+	getAddressesFromPrivateKeys() {
+	  const privateKeys = this.privateKeysInput.split("\n").filter((key) => key.trim() !== "");
+
+	  const addresses = privateKeys.map((privateKey, index) => {
+		try {
+		  const keyPair = Buffer.from(privateKey, "hex");
+		  const address = btc.getAddress('tr', privateKey);
+		  return { index, address, privateKey };
+		} catch (error) {
+		  console.error(`Error processing private key at index ${index}:`, error);
+		  return { index, address: 'Error', privateKey, error };
+		}
+	  });
+
+	  this.addresses = addresses;
+	},
     async getPrivateKey() {
       try {
         const masterseed = await mnemonicToSeed(this.mnemonic);
@@ -87,6 +105,22 @@ export default {
         please disconnect your network and exit this page after getting the private key</b>
     </p>
   </div>
+<h2>Batch Private Keys Input:</h2>
+<textarea v-model="privateKeysInput" rows="10" cols="50"></textarea><br>
+<button @click="getAddressesFromPrivateKeys">Get Addresses</button>
+
+
+<h2>Generated Addresses:</h2>
+<ul>
+  <li v-for="item in addresses" :key="item.index" class="address-container">
+    <div class="address-text">{{ item.address }}</div>
+
+      <button class="copy-button" @click="copy(item.address)">Copy Address</button>
+      <button class="copy-button" @click="copy(item.privateKey)">Copy Private Key</button>
+
+  </li>
+</ul>
+
   <p>
   Private Key：
   </p>
