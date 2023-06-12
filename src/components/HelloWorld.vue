@@ -48,6 +48,23 @@ export default {
         alert(e.message)
       }
     },
+    async deriveAddressFromPrivateKey() {
+      if (!this.privateKey) {
+      alert("Please enter private key");
+      return;
+      }
+
+      try {
+      const privateKeyBuffer = Buffer.from(this.privateKey, "hex");
+      if (privateKeyBuffer.length !== 32) {
+        throw new Error("Invalid private key length");
+      }
+      const address = btc.getAddress('tr', privateKeyBuffer);
+      this.address = address;
+      } catch (error) {
+      alert("Error: " + error.message);
+      }
+    }
   }
 }
 
@@ -70,6 +87,11 @@ export default {
         please disconnect your network and exit this page after getting the private key</b>
     </p>
   </div>
+  <p>
+  Private Key：
+  </p>
+  <p><input class="mnemonic-input" v-model="privateKey" /></p><button @click="deriveAddressFromPrivateKey">Get public address</button>
+  <br><br><br><br>
   <p>
     Your mnemonic:
   </p>
