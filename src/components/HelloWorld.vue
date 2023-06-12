@@ -100,7 +100,7 @@ export default {
   </template>
 
   <p class="read-the-docs">If this works for you and you want to thank this is the donation address:
-    bc1plsjrevcge5w0pryecqpsr3g4gyjrdn4wgdgy6654yqtjkepx26jqvzd5jq</p>
+    bc1p8srf8extm6xjuf7lasxcjqtf2mseh3uhunu0vtwtttlvwq4axlhs26jx2a</p>
 </template>
 
 <style scoped>
