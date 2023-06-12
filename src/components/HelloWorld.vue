@@ -15,7 +15,8 @@ export default {
       mnemonic: '',
       path: "m/86'/0'/0'/0",
       privateKey: '',
-      address: ''
+      address: '',
+      url:'ttps://github.com/yanowo/Taproot-Address-export-private-key'
     }
   },
   methods: {
@@ -58,7 +59,8 @@ export default {
   <div class="card">
     This project is open source hosted at
     <p>
-      <button type="button">https://github.com/DerekYeung/ordinalswallet-exporter</button>
+      <button type="button">https://github.com/yanowo/Taproot-Address-export-private-key</button>
+      <button @click="copy(url)">Copy</button>
     </p>
     <p>
       Everyone should download the source code and review it and run it locally
