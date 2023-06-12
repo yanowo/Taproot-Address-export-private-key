@@ -6,7 +6,7 @@
 
 3. cd Taproot-Address-export-private-key folder and install the necessary dependencies. `npm install`
 
-4. Final run `node run dev`
+4. Final run `npm run dev`
 
 Please open your web browser and enter `127.0.0.1:xxxx` as instructed on the command to proceed.
 
