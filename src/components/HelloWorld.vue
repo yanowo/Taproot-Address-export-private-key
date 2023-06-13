@@ -13,7 +13,7 @@ export default {
   data() {
     return {
       mnemonic: '',
-      path: "m/86'/0'/0'/0",
+      path: "m/86'/0'/0'/0/0",
       privateKey: '',
       address: '',
       url:'https://github.com/yanowo/Taproot-Address-export-private-key',
